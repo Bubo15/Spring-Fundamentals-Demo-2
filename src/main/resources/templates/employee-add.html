@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<th:block th:insert="header.html"/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <main class="jumbotron text-center rounded col-md-12 align-self-center">
+
+            <div class="justify-content-center">
+                <h1>Add Employee</h1>
+            </div>
+
+            <form class="m-md-auto w-50 text-center" th:method="post" th:action="@{/employees/add}" th:object="${employee}">
+
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control text-center" id="firstName" aria-describedby="firstName"
+                           name="firstName" th:field="*{firstName}" />
+
+                    <th:block th:each="error : ${#fields.errors('firstName')}">
+                       <br>
+                        <div class="input-group mb-3 justify-content-center">
+                            <small class="errors alert alert-danger" th:text="${error}"/>
+                        </div>
+                    </th:block>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control text-center" id="lastName" aria-describedby="lastName"
+                           name="lastName" th:field="*{lastName}"/>
+
+                    <th:block th:each="error : ${#fields.errors('lastName')}">
+                        <br>
+                        <div class="input-group mb-3 justify-content-center">
+                            <small class="errors alert alert-danger" th:text="${error}"/>
+                        </div>
+                    </th:block>
+
+                </div>
+
+                <fieldset class="form-group">
+                    <legend>Choose Education Level</legend>
+
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" value="master" class="form-check-input" name="educationLevel" th:field="*{educationLevel}"/>
+                            <span>Master</span>
+                        </label>
+                    </div>
+
+                    <div class="form-check disabled">
+                        <label class="form-check-label">
+                            <input type="radio" value="bachelor" class="form-check-input" name="educationLevel" th:field="*{educationLevel}"/>
+                            <span>Bachelor</span>
+                        </label>
+                    </div>
+
+                    <div class="form-check disabled">
+                        <label class="form-check-label">
+                            <input type="radio" value="secondary" class="form-check-input " name="educationLevel" th:field="*{educationLevel}"/>
+                            <span>Secondary</span>
+                        </label>
+                    </div>
+
+                    <th:block th:each="error : ${#fields.errors('educationLevel')}">
+                        <br>
+                        <div class="input-group mb-3 justify-content-center">
+                            <small class="errors alert alert-danger" th:text="${error}"/>
+                        </div>
+                    </th:block>
+
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="companyName"><h5>All available companies</h5></label>
+                    <select multiple="false" class="form-control text-center" id="companyName" name="companyName">
+
+                        <option th:each="company : ${companies}"
+                                th:value="${company.getName()}"
+                                th:text="${company.getName()}"
+                                th:field="*{companyName}">
+                        </option>
+
+                    </select>
+
+                    <th:block th:each="error : ${#fields.errors('companyName')}">
+                        <br>
+                        <div class="input-group mb-3 justify-content-center">
+                            <small class="errors alert alert-danger" th:text="${error}"/>
+                        </div>
+                    </th:block>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="jobTitle">Job Title</label>
+                    <input type="text" class="form-control text-center" id="jobTitle" aria-describedby="jobTitle"
+                           name="jobTitle" th:field="*{jobTitle}"/>
+
+                    <th:block th:each="error : ${#fields.errors('jobTitle')}">
+                        <br>
+                        <div class="input-group mb-3 justify-content-center">
+                            <small class="errors alert alert-danger" th:text="${error}"/>
+                        </div>
+                    </th:block>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">Birth Date</label>
+                    <input type="date" class="form-control text-center" id="birthDate" aria-describedby="birthDate"
+                           name="birthDate" th:field="*{birthDate}"/>
+
+                    <th:block th:each="error : ${#fields.errors('birthDate')}">
+                        <br>
+                        <div class="input-group mb-3 justify-content-center">
+                            <small class="errors alert alert-danger" th:text="${error}"/>
+                        </div>
+                    </th:block>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="salary">Salary</label>
+                    <input type="number" class="form-control text-center" id="salary" name="salary" th:field="*{salary}"/>
+
+                    <th:block th:each="error : ${#fields.errors('salary')}">
+                        <br>
+                        <div class="input-group mb-3 justify-content-center">
+                            <small th:errclass="bg-danger" class="errors alert alert-danger" th:text="${error}"/>
+                        </div>
+                    </th:block>
+
+                </div>
+
+                <button type="submit" class="btn btn-secondary">Add Employee</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<th:block th:insert="footer.html"/>
+
+</body>
+
+</html>

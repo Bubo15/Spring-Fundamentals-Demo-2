@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<th:block th:insert="header.html"/>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <main class="jumbotron text-center rounded col-md-12 align-self-center">
+                <div class="justify-content-center">
+                    <h1>Company Details</h1>
+                </div>
+                <div class="row" th:object="${company}">
+                    <div class="col-md-6 bg-dark"><img src="/img/company.png" height="350px"></div>
+                    <div class="col-md-6 bg-dark">
+                        <h2>Company</h2>
+                        <h4 th:text="| Name: ${company.name} |">Name: {name}</h4>
+                        <h4 th:text="| Town: ${company.town} |">Town: {town}</h4>
+                        <h4 th:text="| Description: ${company.description} |">Description: {description}</h4>
+                        <h4 th:text="| Budget: ${company.budget} |">Budget: {budget}</h4>
+                        <div class="align-bottom">
+                            <a class="btn btn-danger align-bottom"
+                               th:href="@{'/companies/delete/' + ${company.id} }">Delete company
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</main>
+
+<th:block th:insert="footer.html"/>
+
+</body>
+</html>

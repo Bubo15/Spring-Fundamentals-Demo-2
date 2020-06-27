@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<th:block th:insert="header.html"/>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <main class="jumbotron text-center rounded col-md-8">
+                <div class="justify-content-center">
+                    <h1>Welcome to LinkedOut Application</h1>
+                </div>
+                <div th:text="| It is ${#dates.createNow()} |">It's: {Current date and time}</div>
+            </main>
+        </div>
+
+        <th:block th:insert="footer.html"/>
+
+    </div>
+</main>
+
+</body>
+</html>

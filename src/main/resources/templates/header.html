@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkedOut</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-toggler bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link text-white" th:href="@{/}">Home</a>
+                <a class="nav-item nav-link text-white" th:href="@{/companies/add}">Add Company</a>
+                <a class="nav-item nav-link text-white" th:href="@{/employees/add}">Add Employee</a>
+                <a class="nav-item nav-link text-white" th:href="@{/companies/all}">All Companies</a>
+                <a class="nav-item nav-link text-white" th:href="@{/employees/all}">All Employees</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+</html>

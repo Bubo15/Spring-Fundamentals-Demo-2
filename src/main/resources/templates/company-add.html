@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<th:block th:insert="header.html"/>
+
+<script src="/js/errorCompanyAdd.js" th:inline="javascript"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <main class="jumbotron text-center rounded col-md-8 align-self-center">
+
+        <div class="justify-content-center">
+            <h1>Add Company</h1>
+        </div>
+
+        <form class="m-md-auto w-50 text-center" th:method="post" th:action="@{/companies/add}" >
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control text-center" id="name" aria-describedby="nameHelp" name="name"/>
+                <small>Name must be between 2 and 10 characters</small>
+                <small id="already-exist">This name already exist</small>
+            </div>
+
+            <div class="form-group">
+                <label for="town">Town</label>
+                <input type="text" class="form-control text-center" id="town" aria-describedby="town" name="town"/>
+                <small>Town must be between 2 and 10 characters</small>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control text-center" id="description" aria-describedby="description" name="description"/>
+                <small>Description must be bigger than 10 characters</small>
+            </div>
+
+            <div class="form-group">
+                <label for="budget">Budget</label>
+                <input type="number" min="0" class="form-control text-center" id="budget" aria-describedby="budget" name="budget"/>
+                <small>Budget can't be negative number</small>
+            </div>
+
+            <button type="submit"  class="btn btn-secondary">Add Company</button>
+        </form>
+    </main>
+</div>
+
+<th:block th:insert="footer.html"/>
+</body>
+
+</html>

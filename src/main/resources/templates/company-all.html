@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<th:block th:insert="header.html"/>
+<main>
+    <div class="container">
+        <h2 class="text-center text-dark bg-light rounded-circle mt-5">All companies</h2>
+        <hr style="width: 50%"/>
+        <div class='row mb-4 d-flex justify-content-around'>
+
+            <div class="col-md-4 d-flex flex-column bg-text mb-3 rounded-circle" th:each="company : ${companies}">
+                <h2 th:text="| Company: ${company.getName()} |">Company: {name}</h2>
+                <h4 th:text="| Company: ${company.getTown()} |">Town: {town}</h4>
+                <h4 th:text="| Company: ${company.getDescription()} |">Description: {description - first 5 char} ...</h4>
+                <h4><a class="btn-block" th:href="@{'/companies/' + ${company.id} }">Detail info</a></h4>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<th:block th:insert="footer.html"/>
+
+</body>
+
+</html>
